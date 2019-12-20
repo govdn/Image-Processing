@@ -1,0 +1,10 @@
+[x,fo]= audioread('sample14.wav');
+fs=10000;
+x=resample(x,100000,fs);
+t=(0:length(x)-1)/fs;
+subplot(2,1,1);
+plot(t,x);
+[h,f]=freqz(1,512,fs);
+subplot(2,1,2);
+plot(f,(20*log10(abs(h))));
+ncoeff=2+fs/100;

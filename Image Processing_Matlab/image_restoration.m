@@ -1,0 +1,17 @@
+I = im2double(imread('Fig0107.tif'));
+%I=rgb2gray(I);
+figure;
+subplot(1,3,1);
+imshow(I);
+title('Original Image');
+LEN = 21;
+THETA = 11;
+PSF = fspecial('motion', LEN, THETA);
+blurred = imfilter(I, PSF, 'conv', 'circular');
+subplot(1,3,2);
+imshow(blurred);
+title('Blurred Image');
+wnr1 = deconvwnr(blurred, PSF, 0);
+subplot(1,3,3);
+imshow(wnr1);
+title('Restored Image');

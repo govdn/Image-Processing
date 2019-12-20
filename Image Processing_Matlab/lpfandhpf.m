@@ -1,0 +1,12 @@
+clc;
+clear;
+close all;
+i=imread('Fig(hpf).tif');
+h1=fspecial('average',[5,5]);
+i1=imfilter(i,h1);
+hh=fspecial('unsharp');
+i2=imfilter(i,hh);
+figure;
+subplot(1,3,1),imshow(i),title('orginal image');
+subplot(1,3,2),imshow(i1),title('lpf');
+subplot(1,3,3),imshow(i2),title('hpf');

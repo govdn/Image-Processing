@@ -1,0 +1,10 @@
+x=imread('Fig(hist).tif');
+subplot(2,2,1);
+imshow(x);
+subplot(2,2,3);
+imhist(x);
+subplot(2,2,2);
+histeq(x);
+y= histeq(x);
+subplot(2,2,4);
+imhist(y);

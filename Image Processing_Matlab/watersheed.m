@@ -1,0 +1,16 @@
+I=imread('Fig(Watshed).jpg');
+I=rgb2gray(I);
+I=double(I);
+hy=fspecial('sobel');
+hx=hy';
+Iy=imfilter(I,hy,'replicate');
+Ix=imfilter(I,hx,'replicate');
+gradmag=sqrt(Ix.^2 + Iy.^2);
+figure, imshow(gradmag);
+bw2= ~bwareaopen(~gradmag,10);
+D=~bwdist(~bw2);
+figure,imshow(D);
+Ld=watershed(D);
+bw2=gradmag;
+bw2(Ld==0)=0;
+figure,imshow(bw2);

@@ -1,0 +1,11 @@
+clc;
+clear;
+close all;
+I= imread('Fig(hist).tif');
+subplot(1,2,1);
+imshow(I);
+I=double(I);
+g=kmeans(I(:),4);
+j=reshape(g,size(I));
+subplot(1,2,2);
+imshow(j,[]);
